@@ -1,0 +1,11 @@
+wikipidea
+pyjokes
+time
+keyboard
+json
+dataclasses
+dataclasses_json
+pyttsx3
+speechrecogintion
+youtubesearchpython
+bs4
