@@ -80,7 +80,19 @@ class Item():
     @property
     def age(self):
         return self.__creation_date -date.today()
+    
+    def item_to_dict(self):
+        return{
+            'cdate':self.__creation_date,
+            'itemstatus':self.__status,
+            'itemtitle':self.__title,
+            'priority':self.__priority,
+            'flag':self.__flag,
+            'itemduedate':self.__due_date,
+            'notes':self.__notes,
+            'icon':self.__icon
 
+        }
 class Todo():
     __todos=[]
     def __init__(self):
@@ -105,6 +117,7 @@ class Todo():
         self.__todos.append(item)
         print("added "+item.title+"succesfully")
 
+
     @property
     def items(self)->list:
         return self.__todos
@@ -124,6 +137,13 @@ class Todo():
                 return True
         print("Item not found!")
         return False
+    
+    def todo_to_listdict(self)->list:
+        rtn_listdict=[]
+        item:Item
+        for item in self.__todos:
+            rtn_listdict.append(item.item_to_dict())
+        return rtn_listdict
 
 '''i=Item("Get shopping")
 l=Todo()
