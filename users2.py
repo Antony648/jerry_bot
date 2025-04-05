@@ -3,9 +3,10 @@ import json
 import os
 from todo import Todo 
 class user2():
-    def __init__(self,name,age,place):
+    def __init__(self,name,age,place,passkey):
         self.name=name
         self.age=age
+        self.__passkey=passkey
         self.place=place
         self.__gender=''
         self.__friends=[]
@@ -15,6 +16,13 @@ class user2():
         self.__status=''
         #self.__bdate=date
         
+    @property
+    def passkey(self):
+        return self.__passkey
+    @passkey.setter
+    def passkey(self,passk:str):
+        self.__passkey=passk
+
     @property
     def todo(self):
         return self.__mytodo
@@ -61,6 +69,7 @@ class user2():
     def to_dict(self):
         return {
             'name':self.name,
+            'passkey':self.passkey,
             'age':self.age,
             'city':self.place,
             'friends':self.__friends,
@@ -75,8 +84,8 @@ class user2():
     
 
 #sample data
-usra=user2(name="Antony",age=20,place='india')
-usrt=user2(name='Trishaa Raj',age=21,place='india')
+usra=user2(name="Antony",age=20,place='india',passkey='wiplash')
+usrt=user2(name='Trishaa Raj',age=21,place='india',passkey='trisha')
 #usr_lst=[usra,usrt]
 
 path='/home/antony/Desktop/ai_project/ai_proj/jerry_bot/usersdert.json'
@@ -108,7 +117,7 @@ def read_from_userdert()->list:
             #print(data)
             return data
 
-user3=user2(name="joshua",age=10,place="coorg")
-write_to_usersdert(user3)
+#user3=user2(name="joshua",age=10,place="coorg",passkey='joshua')
+#write_to_usersdert(user3)
 #read_from_userdert()
 #write_first(usrt)

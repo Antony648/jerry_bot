@@ -1,12 +1,32 @@
 [
     {
-        "name": "Antony",
-        "age": 20,
-        "city": "india"
+        "name": "Trishaa Raj",
+        "passkey": "trisha",
+        "age": 21,
+        "city": "india",
+        "friends": [],
+        "todo": [],
+        "status": "",
+        "spousename": ""
     },
     {
-        "name": "Trishaa Raj",
-        "age": 21,
-        "city": "india"
+        "name": "Antony",
+        "passkey": "wiplash",
+        "age": 20,
+        "city": "india",
+        "friends": [],
+        "todo": [],
+        "status": "",
+        "spousename": ""
+    },
+    {
+        "name": "joshua",
+        "passkey": "joshua",
+        "age": 10,
+        "city": "coorg",
+        "friends": [],
+        "todo": [],
+        "status": "",
+        "spousename": ""
     }
 ]
