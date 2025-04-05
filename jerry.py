@@ -460,6 +460,8 @@ while True:
         elif user_inp in ["shutdown","exit","power off"]:
             jerry.speak("shutting myself off for now")
             sys.exit()
+        elif 'create' in user_inp and 'you' in user_inp:
+            jerry.speak("someone who has a lot of free time")
 
         elif "time" in user_inp:
             if any(item in user_inp for item in ["time now","tell time","tell me the time","what is the time"]):
@@ -548,8 +550,7 @@ while True:
                 jerry.speak("you must have superuser privilleges for doing that")
         elif any(item in user_inp for item in ['am i']):
             jerry.speak("i cannot  assess humans")
-        elif 'create' in user_inp and 'you' in user_inp:
-            jerry.speak("someone who has a lot of free time")
+        
         elif 'name' in user_inp and 'you' in user_inp:
             jerry.speak("i am jerry")
         else:
