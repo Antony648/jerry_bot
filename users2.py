@@ -76,6 +76,7 @@ class user2():
             'todo':self.__mytodo.todo_to_listdict(),
             'status':self.__status,
             'spousename':self.__spousename,
+            'gender':self.__gender
             #'date':self.__bdate
         }
     
@@ -114,10 +115,19 @@ def read_from_userdert()->list:
     if os.path.exists(path):
         with open(path,'r') as file:
             data=json.load(file)
-            #print(data)
+            print(data)
             return data
+        
+def convert_dict_item_to_user2(item:dict)->user2:
+    us=user2(name=item.values('name'),age=item.values('age'),place=item.values('place'),passkey=item.values('passkey')):
+    #us.friends=item.values('friends')
+    #us.todo =item.values('todo')
+    us.gender=item.values('gender')
+    us.status=item.values('status')
+    us.spousename=item.values('spousename')
+    
 
 #user3=user2(name="joshua",age=10,place="coorg",passkey='joshua')
 #write_to_usersdert(user3)
-#read_from_userdert()
+read_from_userdert()
 #write_first(usrt)

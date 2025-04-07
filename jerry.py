@@ -11,10 +11,115 @@ from websearch import search_song
 import keyboard
 import psutil
 import os
+from users2 import user2
+import users2
 os.environ['DISPLAY']=":0"
 
 jerry=AI()
-todo=Todo()
+default_user=user2()
+todo=user2.todo()
+
+def authenticate_user():
+    jerry.speak("are your an existing user:")
+    
+    while True:
+        user_inp=jerry.listen()
+        if user_inp in ["positive","yes","i am ","i do"]:
+            jerry.speak("say your name")
+            while True:
+                user_inp=jerry.listen()
+                #dict_item:dict
+                for dict_item in users2.read_from_userdert():
+                    if user_inp==dict_item.values('name').lower():
+                        count=1
+                        while True:
+                            jerry.speak(f' hello {user_inp}, say your passkey')
+                            user_inp=jerry.listen()
+                            if user_inp == dict_item.values('passkey'):
+                                #codefor convert dict to user2
+                                jerry.speak(f"you have successfully authenticated as{dict_item.values('name')}")
+                                return
+                            else:
+                                jerry.speak('wrong passkey')
+                                if count==3:
+                                    jerry.speak('authentication failed you have reached 3 trials')
+                                    return
+                                count+=1
+                        
+                jerry.speak('couldnt find the name do you want to say a different name or you do you want to quit')
+                user_inp=jerry.listen()
+                if user_inp in ['no',"quit",'exit',"negative"]:
+                    jerry.speak("exiting from user authentication sequence")
+                    return
+                else:
+                    jerry.speak("say name again")       
+        elif user_inp in ["negative","no","i am not"]:
+            jerry.speak("do you want to become one")
+            while True:
+                user_inp=jerry.listen()
+                if user_inp in ["yes","positive","proceed"]:
+                    name:str
+                    age:int
+                    place:str
+                    passkey:str
+
+                    jerry.speak("please say your name")
+                    while True:
+                        name=jerry.listen()
+                        jerry.speak(f"name input recived is {name} do you want to proceed")
+                        user_inp=jerry.listen()
+                        if user_inp in ["yes","proceed","positive"]:
+                            break
+                        else:
+                            jerry.speak("say name again")
+
+                    jerry.speak("please say your age")
+                    while True:
+                        age=int(jerry.listen())
+                        jerry.speak(f"name input recived is {age} do you want to proceed")
+                        user_inp=jerry.listen()
+                        if user_inp in ["yes","proceed","positive"]:
+                            break
+                        else:
+                            jerry.speak("say age  again")
+
+
+                    jerry.speak("please say your place")
+                    while True:
+                        place=jerry.listen()
+                        jerry.speak(f"name input recived is {place} do you want to proceed")
+                        user_inp=jerry.listen()
+                        if user_inp in ["yes","proceed","positive"]:
+                            break
+                        else:
+                            jerry.speak("say place name again")
+
+
+                    jerry.speak("please mention the passkey")
+                    while True:
+                        passkey=jerry.listen()
+                        jerry.speak(f"name input recived is {passkey} do you want to proceed")
+                        user_inp=jerry.listen()
+                        if user_inp in ["yes","proceed","positive"]:
+                            break
+                        else:
+                            jerry.speak("say passkey again")
+
+
+                    default_user=user2(name=name,age=age,place=place,passkey=passkey)
+                    users2.write_to_usersdert(default_user)
+                    return
+                elif user_inp in ['no','nien','negative']:
+                    jerry.speak("exiting from user creation sequence")
+                    return
+                else:
+                    jerry.speak("unable to understand it,please repeat if you want to be a new user or not")
+            break
+            
+        else:
+            jerry.speak("command unclear please say if you are a user or not")
+
+
 
 def changeto_pending():
     jerry.speak("say the item you want to update status to pending")
