@@ -71,7 +71,7 @@ class user2():
             'name':self.name,
             'passkey':self.passkey,
             'age':self.age,
-            'city':self.place,
+            'place':self.place,
             'friends':self.__friends,
             'todo':self.__mytodo.todo_to_listdict(),
             'status':self.__status,
