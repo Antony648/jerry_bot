@@ -1,4 +1,5 @@
 from datetime import time
+    #creating a custom class for medicine
 class medi_time:
     def __init__(self):
         self.morning_time=time(hour=9,minute=0)
