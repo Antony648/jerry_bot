@@ -87,6 +87,7 @@ class user2():
 #sample data
 usra=user2(name="Antony",age=20,place='india',passkey='wiplash')
 usrt=user2(name='Trishaa Raj',age=21,place='india',passkey='trisha')
+default_usr_org=user2('default',0,'default','passkey')
 #usr_lst=[usra,usrt]
 
 path='/home/antony/Desktop/ai_project/ai_proj/jerry_bot/usersdert.json'
@@ -119,7 +120,7 @@ def read_from_userdert()->list:
             return data
         
 def convert_dict_item_to_user2(item:dict)->user2:
-    us=user2(name=item.values('name'),age=item.values('age'),place=item.values('place'),passkey=item.values('passkey')):
+    us=user2(name=item.values('name'),age=item.values('age'),place=item.values('place'),passkey=item.values('passkey'))
     #us.friends=item.values('friends')
     #us.todo =item.values('todo')
     us.gender=item.values('gender')

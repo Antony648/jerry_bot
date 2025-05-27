@@ -11,12 +11,12 @@ from websearch import search_song
 import keyboard
 import psutil
 import os
-from users2 import user2
+from users2 import user2,default_usr_org
 import users2
 os.environ['DISPLAY']=":0"
 
 jerry=AI()
-default_user=user2()
+default_user=default_usr_org
 todo=user2.todo()
 
 def authenticate_user():
